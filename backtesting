@@ -1,0 +1,27 @@
+import pandas as pd
+from strategies.ai_trend_follow import AITrendFollow
+
+class Backtest:
+    def __init__(self, data_path, initial_balance=1000):
+        self.data = pd.read_csv(data_path)
+        self.strategy = AITrendFollow()
+        self.balance = initial_balance
+        self.positions = 0
+
+    def run(self):
+        for index, row in self.data.iterrows():
+            signal = self.strategy.generate_signal([row])
+            if signal == "BUY" and self.balance > row['close']:
+                self.positions += 1
+                self.balance -= row['close']
+            elif signal == "SELL" and self.positions > 0:
+                self.positions -= 1
+                self.balance += row['close']
+            print(f"Balance: {self.balance}, Positions: {self.positions}")
+
+        final_balance = self.balance + (self.positions * self.data['close'].iloc[-1])
+        print(f"Final Balance: {final_balance}")
+
+if __name__ == "__main__":
+    backtest = Backtest("data/historical_data.csv")
+    backtest.run()
