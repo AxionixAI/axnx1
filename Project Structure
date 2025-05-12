@@ -1,0 +1,18 @@
+axionix-bot/
+├── main.py
+├── config.py
+├── strategy.py
+├── risk_management.py
+├── market_data.py
+├── trade_executor.py
+├── logger.py
+├── notifier.py
+├── performance.py
+├── utils.py
+├── requirements.txt
+├── data_management/
+│   ├── database.py
+│   └── data_handler.py
+└── analytics/
+    ├── report_generator.py
+    └── data_analyzer.py
