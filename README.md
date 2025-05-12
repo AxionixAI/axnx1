@@ -1,5 +1,5 @@
 
-# Axionix - AI-Powered Crypto Tax Automation Platform
+# Axionix - AI-Powered Crypto Trade & Tax Automation Platform
 
 Axionix is an advanced platform designed to automate the process of calculating cryptocurrency tax obligations. By integrating with multiple exchanges, analyzing transaction data using cutting-edge artificial intelligence, and generating detailed tax reports, Axionix ensures complete compliance with local tax regulations. We prioritize security and user privacy while offering a seamless and efficient tax reporting solution for cryptocurrency traders and investors.
 
