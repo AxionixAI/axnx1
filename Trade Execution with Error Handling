@@ -1,0 +1,30 @@
+import ccxt
+import time
+
+class TradeExecutor:
+    def __init__(self, config):
+        exchange_class = getattr(ccxt, config["exchange"].lower())
+        self.exchange = exchange_class({
+            "apiKey": config["api_key"],
+            "secret": config["api_secret"]
+        })
+        self.pair = config["trading_pair"]
+
+    def execute(self, signal, price):
+        try:
+            if signal == "BUY":
+                order = self.exchange.create_market_buy_order(self.pair, amount=0.001)
+                print(f"Buy order executed at {price}")
+            elif signal == "SELL":
+                order = self.exchange.create_market_sell_order(self.pair, amount=0.001)
+                print(f"Sell order executed at {price}")
+            else:
+                print("Hold: No trade executed.")
+            return order
+        except ccxt.NetworkError as e:
+            print(f"Network error: {e}")
+        except ccxt.ExchangeError as e:
+            print(f"Exchange error: {e}")
+        except Exception as e:
+            print(f"Unexpected error: {e}")
+        time.sleep(60)  # Pause after an error to prevent API rate limit issues
