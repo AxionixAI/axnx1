@@ -1,0 +1,7 @@
+ccxt  
+pandas  
+scikit-learn  
+joblib  
+sqlite3  
+json  
+datetime  
